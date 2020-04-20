@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+txt2send=$(echo "\"$*\"" | sed 's/ /\%s/g')
+adb shell input text $txt2send

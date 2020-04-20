@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+TSTEMP=$(date "+%Y-%m-%d_%H-%M-%S")
+
+if [ $1 ]; then
+FILE_NAME="${1}_$TSTEMP.mp4"
+else
+FILE_NAME="VideoCap_${TSTEMP}.mp4"
+fi
+
+(trap exit SIGINT; adb shell screenrecord /sdcard/${FILE_NAME})
+sleep 1
+adb pull /sdcard/${FILE_NAME}
+sync
+echo $FILE_NAME

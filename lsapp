@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+adb shell 'pm list packages' |grep -i $1 |cut -d':' -f2

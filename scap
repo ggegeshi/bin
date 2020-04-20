@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+TSTEMP=$(date "+%Y-%m-%d_%H-%M-%S")
+
+if [ $1 ]; then
+FILE_NAME="${1}_$TSTEMP.png"
+else
+FILE_NAME="ScreenCap_${TSTEMP}.png"
+fi
+
+adb shell screencap -p /sdcard/screencap.png && adb pull /sdcard/screencap.png ./${FILE_NAME} >> /dev/null
+echo $FILE_NAME
