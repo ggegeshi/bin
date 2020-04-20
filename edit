@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+TSTEMP=$(date "+%Y-%m-%d_%H-%M-%S")
+
+if [ $1 ]; then
+FILE_NAME="${1}.txt"
+else
+FILE_NAME="${TSTEMP}.txt"
+fi
+
+touch $FILE_NAME
+open -a "Sublime Text" $FILE_NAME
